@@ -68,15 +68,15 @@ class MarkdownEditor(QMainWindow):
         html_body = markdown.markdown(md, extensions=['fenced_code', 'tables', 'codehilite'])
         css = self.dark_css if self.is_dark else self.light_css
         full_html = f"""<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>{css}</style>
-</head>
-<body>
-{html_body}
-</body>
-</html>"""
+                        <html>
+                        <head>
+                          <meta charset="utf-8">
+                          <style>{css}</style>
+                        </head>
+                        <body>
+                        {html_body}
+                        </body>
+                        </html>"""
         self.preview.setHtml(full_html)
 
     def open_file(self):
@@ -120,15 +120,15 @@ class MarkdownEditor(QMainWindow):
                 html_body = markdown.markdown(md, extensions=['fenced_code', 'tables', 'codehilite'])
                 css = self.dark_css if self.is_dark else self.light_css
                 full_html = f"""<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <style>{css}</style>
-</head>
-<body>
-{html_body}
-</body>
-</html>"""
+                                <html>
+                                <head>
+                                  <meta charset="utf-8">
+                                  <style>{css}</style>
+                                </head>
+                                <body>
+                                {html_body}
+                                </body>
+                                </html>"""
                 with open(path, 'w', encoding='utf-8') as f:
                     f.write(full_html)
             except Exception as e:
@@ -147,18 +147,18 @@ class MarkdownEditor(QMainWindow):
     @property
     def light_css(self):
         return """
-body { font-family: Arial, sans-serif; background-color: #ffffff; color: #000000; padding: 1em; }
-code { background-color: #f4f4f4; padding: 2px 4px; }
-pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; }
-"""
+               body { font-family: Arial, sans-serif; background-color: #ffffff; color: #000000; padding: 1em; }
+               code { background-color: #f4f4f4; padding: 2px 4px; }
+               pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; }
+               """
 
     @property
     def dark_css(self):
         return """
-body { font-family: Arial, sans-serif; background-color: #2b2b2b; color: #e6e6e6; padding: 1em; }
-code { background-color: #3c3f41; padding: 2px 4px; color: #f8f8f2; }
-pre { background-color: #3c3f41; padding: 1em; overflow-x: auto; }
-"""
+               body { font-family: Arial, sans-serif; background-color: #2b2b2b; color: #e6e6e6; padding: 1em; }
+               code { background-color: #3c3f41; padding: 2px 4px; color: #f8f8f2; }
+               pre { background-color: #3c3f41; padding: 1em; overflow-x: auto; }
+               """
 
 
 if __name__ == "__main__":
