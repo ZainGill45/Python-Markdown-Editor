@@ -1,31 +1,39 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
+import sys
 
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import (
+    QApplication,
+    QCheckBox,
+    QComboBox,
+    QDial,
+    QDoubleSpinBox,
+    QLabel,
+    QLineEdit,
+    QListWidget,
+    QMainWindow,
+    QSlider,
+    QSpinBox,
+)
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(800, 600)
-        self.setWindowTitle("Markdown Editor")
 
-        self.button = QPushButton("Click Me")
+        self.setWindowTitle("My App")
 
-        self.button.clicked.connect(self.button_clicked)
-        self.button.clicked.connect(self.button_toggled)
+        label = QLabel("Hello")
+        font = label.font()
+        font.setPointSize(30)
+        label.setFont(font)
+        label.setAlignment(
+            Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignVCenter
+        )
+        label.setPixmap(QPixmap("otje.webp"))
 
-        self.setCentralWidget(self.button)
+        self.setCentralWidget(label)
 
-    def button_clicked(self):
-        self.button.setText("You already clicked me.")
-        self.button.setEnabled(False)
-        self.setWindowTitle("A new window title")
-
-    def button_toggled(self, checked):
-        print("Check State:", checked)
-
-
-app = QApplication([])
-
+app = QApplication(sys.argv)
 window = MainWindow()
 window.show()
-
 app.exec()
